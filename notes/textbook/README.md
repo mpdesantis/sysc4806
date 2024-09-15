@@ -11,13 +11,210 @@ My notes from the SYSC 4806 textbook.
     - __N.B.__ 2nd Ed. available on book site; however, _not_ used in course.
 
 # Preface xii
+* SaaS as opposed to shrink-wrap software
+    * Single instance servicing many customers vs. one copy per customer
+* SaaS became popular at the same time as _The Agile Manifesto_.
+* _The Agile Manifesto_
+    * Particulary suited for SaaS
+    * Behaviour Driven Design
+    * Test-Driven Development
+    * Pair programming
+    * Scrum
+* 
 # 1 Introduction to SaaS and Agile Development 2
+## Concepts
+Each chapter opening starts with a one-page summary of that chapter's big concepts.
+For this introductory chapter, they are:
+• Plan-and-Document software development processes or lifecycles rely on
+careful, up-front planning that is extensively documented and carefully managed to
+make software development more predictable. Prominent examples are Waterfall ,
+Spiral , and the Rational Unified Process (RUP) lifecycles.
+• In contrast, the Agile lifecycle relies on incrementally developed prototypes that
+involve continuous feedback from the customer on each iteration, each of which
+takes between one to four weeks.
+• Service Oriented Architecture (SOA) creates apps from components that act as
+interoperable services, which allows new systems to be built from these components
+with much less effort. More importantly, from a software engineering perspective,
+SOA enables the construction of large services from many small ones, which history
+teaches us is more likely to be successful than a single large project. One reason
+is that smaller size allows use of Agile development, which has a superior track
+record.
+• Software as a Service (SaaS) is a special case of SOA that deploys software at
+a single site but makes it available to millions of users over the Internet on their
+personal mobile devices, which provides benets to both users and developers. The
+single copy of the software and the competitive environment for SaaS products leads
+to more rapid software evolution for SaaS than for shrink-wrapped software.
+• Legacy Code evolution is vital in the real world, yet often ignored in software
+engineering books and courses. Agile practices enhancing code each iteration, so
+the skills gained also apply to legacy code.
+• Cloud Computing supplies the dependable and scalable computation and storage
+for SaaS by utilizing Warehouse Scale Computers containing as many as
+100,000 servers. The economies of scale allow Cloud Computing to be offered as
+a utility, where you pay only for actual use.
+• Software quality is dened as providing business value to both customers and
+developers. Software Quality Assurance (QA) comes from many levels of testing:
+unit, module, integration, system, and acceptance.
+• Clarity via conciseness, synthesis, reuse, and automation via tools are
+four paths to improving software productivity . The programming framework
+Ruby on Rails follows them to make SaaS developers productive. Don’t Repeat
+Yourself (DRY) warns not to use repetition to achieve reuse, as there should be
+one representation of each piece of knowledge.
 ## 1.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+* Running Example: Affordable Care Act (ACA) rollout in U.S. 
 ## 1.2 Software Development Processes: Plan and Document . . . . . . . . . . . . 5
+* _Software Engineering_
+    * Coined by Naur and Randell, 1969
+    * Goal: to discover methods to build SW that were as predictable in quality, cost, time as those used to build bridges in civil engineering.
+* _Plan and Document SW_
+    * Plan a project and document it before implementing.
+    * Sequence:
+        1. Requirements Analysis and Specification
+        2. Architectural Design
+        3. Implementation and Integration
+        4. Verification
+        5. Operation and Maintenance
+    * Flow is top down to completion, therefore called _Waterfall_ software development _lifecycle_.
+* Software Development Lifecycles
+    * _Waterfall_
+        * Flow is top down to completion.
+            1. Requirements Analysis and Specification
+            2. Architectural Design
+            3. Implementation and Integration
+            4. Verification
+            5. Operation and Maintenance
+    * _Spiral_
+        * Four phases:
+            1. Determine objectives and constraints of this iteration
+            2. Evaluate alternatives and identify and resolve risks
+            3. Develop and verify the prototype for this iteration
+            4. Plan the next iteration
+    * _Rational Unified Process (RUP)_
+        * Waterfall and Sprial features
+        * Phases:
+            1. Inception
+            2. Elaboration
+            3. Construction
+            4. Transition
+        * Engineering Disciplines:
+            1. Business Modeling
+            2. Requirements
+            3. Analysis and Design
+            4. Implementation
+            5. Test
+            6. Deployment
+### Summary
+The basic activities of software engineering are the same in all the software
+development process or lifecycles, but their interaction over time relative to product re-
+leases differs among the models. The Waterfall lifecycle is characterized by much of the
+design being done in advance of coding, completing each phase before going on to the
+next one. The Spiral lifecycle iterates through all the development phases to produce pro-
+totypes, but like Waterfall, the customers may only get involved every 6 to 24 months. The
+more recent Rational Unified Process lifecycle includes phases, iterations, and prototypes,
+while identifying the people skills needed for the project. All rely on careful planning and
+thorough documentation, and all measure progress against a plan.
+
 ## 1.3 Software Development Processes: The Agile Manifesto . . . . . . . . . . . . 11
+* Many SW projects were abandoned, costing much money.
+* __The Agile Manifesto__
+    * _Agile Alliance_, 2001
+    * Values
+        * __Individuals and interactions__ over _processes and tools_
+        * __Working software__ over _comprehensive documentation_
+        * __Customer collaboration__ over _contract negotiation_
+        * __Responding to change__ over _following a plan_
+    * Test-Driven Development (TDD)
+    * User stories
+    * Velocity
+### Summary
+In contrast to the Plan-and-Document lifecycles, the Agile lifecycle work
+with customers to continuously add features to working prototypes until the customer is
+satisfied, allowing customers to change what they want as the project develops. Documen-
+tation is primarily through user stories and test cases, and it does not measure progress
+against a predefined plan. Progress is gauged instead by recording velocity , which essen-
+tially is the rate that a project completes features.
+
 ## 1.4 Service Oriented Architecture . . . . . . . . . . . . . . . . . . . . . . . . . 16
+* __Service-Oriented Architecture__
+    * Designed to make composible services
+    * Componenets of an application act as interoperable services, and can be used independently and recombined in other applications
+    * Antithesis of a "SW silo"
+    * Externalizable Application Programming Interfaces (APIs) to internal components
+        * ie. open to external developers in other corporations and the public
+    * Popularized by Amazon, facebook, etc.
+    * No service can name or access another service's data; it can only make requests for data through an external API.
+    * Advantages
+        * Makes testing easier (test an API)
+        * Tremendous reusability
+    * Disadvantages
+        * Each invocation of a service involves the higher cost of wading through the deeper SW stack of a network interface, resulting in performance loss
+        * Dependability is challengiong because of the possibility of partial failures
+### Summary
+Although the term was nearly lost in a sea of confusion, Service Oriented
+Architecture (SOA) just means an approach to software development in which all the
+subsystems are only available as external services, which means others can recombine
+them in different ways. Following the tools and guidelines in this book ensures that your
+apps will be a good fit to SOA.
+
 ## 1.5 Software as a Service . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+* __Software as a Service (SaaS)__
+    * One type of SOA.
+    * Delivers software and data as a service over the intent, typically through a thin client like a browser
+    * Advantages
+        * Client-side computing and HW requirements are light
+        * Service data kept server-side, easier for clients to manage
+        * Easy to facilitative collective interaction from multiple clients
+        * Easier to maintain large data or frequently-updated data server-side
+        * Only a single copy of the SW runs in a tightly-controlled hardware and OS, so need for portability to various client machines
+        * Easy to introduce new features quickly to retain customers
+        * Only internal developers have a copy of the SW, so they can upgrade the underlying hardware frequently as long as they don't break APIs
+* __Ruby on Rails (Rails)__
+    * Came from an Agile community
+    * Modern scripting language
+    * Automatic memory managment
+    * Dynamic typing
+    * Metaprogramming - synthesize code at runtime
+    * Closures, blocks, yields
+### Summary
+Software as a Service (SaaS) is attractive to both customers and providers
+because the universal client (the Web browser) makes it easier for customers to use the
+service and the single version of the software at a centralized site makes it easier for the
+provider to deliver and improve the service. Given the ability and desire to frequently
+upgrade SaaS, the Agile software development process is popular for SaaS, and so there
+are many frameworks to support Agile and SaaS. This book uses Ruby on Rails
+
 ## 1.6 Cloud Computing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+* SaaS places 3 demands on IT infrastructure:
+    1. Communication
+    2. Scalability
+    3. Availability
+* __Clusters__
+    * Collections of small-scale computers connected by Ethernet switches
+    * Advantages:
+        * Scalability
+        * Small operator-to-machine ratio
+        * Use of Virtual machines (VMs)
+        * Cheaper
+        * Extensive redundancy in HW and SW for dependability
+* __Public Cloud Computing__ or __Utility Computing__
+    * Renting HW and SW services in data center
+* __Cloud Computing__
+    * Today's realization of utility computing
+    * Lack of data centre no longer obstacle, just rent one
+
+
+### Summary
+• The Internet supplies the communication for SaaS.
+• Cloud Computing provides the scalable and dependable hardware computation
+and storage for SaaS.
+• Cloud computing consists of clusters of commodity servers that are connected by
+local area network switches, with a software layer providing sufficient redundancy
+to make this cost-effective hardware dependable.
+• These large clusters or Warehouse Scale Computers offer economies of scale.
+• Taking advantage of economies of scale, some Cloud Computing providers offer
+this hardware infrastructure as low-cost utility computing that anyone can use on
+a pay-as-you-go basis, acquiring resources immediately as your customer demand
+grows and releasing them immediately when it drops.
+
 ## 1.7 Beautiful vs. Legacy Code . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
 ## 1.8 Software Quality Assurance: Testing . . . . . . . . . . . . . . . . . . . . . . 25
 ## 1.9 Productivity: Conciseness, Synthesis, Reuse, and Tools . . . . . . . . . . . . 26
@@ -30,6 +227,7 @@ My notes from the SYSC 4806 textbook.
 ## I Software as a Service 41
 
 # 2 The Architecture of SaaS Applications 42
+
 ## 2.1 100,000 Feet: Client-Server Architecture . . . . . . . . . . . . . . . . . . . . 44
 ## 2.2 50,000 Feet: Communication—HTTP and URIs . . . . . . . . . . . . . . . . 46
 ## 2.3 10,000 Feet: Representation—HTML and CSS . . . . . . . . . . . . . . . . 50
