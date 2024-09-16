@@ -44,6 +44,15 @@ public class AddressBook {
     }
 
     /**
+     * Accessor: Get the number of BuddyInfos in this AddressBook.
+     *
+     * @return This AddressBook's number of BuddyInfos.
+     */
+    public int getNumBuddyInfos() {
+        return this.buddies.size();
+    }
+
+    /**
      * Accessor: Get this AddressBook's property.
      * 
      * @return This AddressBook's name.

@@ -1,5 +1,11 @@
 package AddressBook;
 
+/**
+ * Class BuddyInfo, which models a simple contact in an AddressBook.
+ *
+ * @author M. De Santis
+ * @version 20240916
+ */
 public class BuddyInfo {
 
     /* Instance Variables */
@@ -58,7 +64,6 @@ public class BuddyInfo {
     /**
      * Print a BuddyInfo.
      *
-     * @param buddy The buddy to print info for.
      * @return void
      */
     public void printBuddyInfo() {
@@ -68,17 +73,6 @@ public class BuddyInfo {
 
         return;
     }
-
-    /**
-     * Serialize a string according to lab manual.
-     *
-     * @param buddy The buddy to stringify.
-     * @return void
-     */
-    public String toString() {
-        return this.getName() + DELIMITER + this.getNumber() + DELIMITER;
-    }
-
 
 
 }
