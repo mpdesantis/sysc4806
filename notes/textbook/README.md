@@ -321,8 +321,63 @@ that server.
 
 
 ## 2.3 10,000 Feet: Representation—HTML and CSS . . . . . . . . . . . . . . . . 50
+* HTML
+* CSS
+### Summary
+• An HTML (HyperText Markup Language) document consists of a hierarchically
+nested collection of elements. Each element begins with a tag in <angle brackets>
+that may have optional attributes. Some elements enclose content.
+• A selector is an expression that identifies one or more HTML elements in a docu-
+ment by using a combination of the element name (such as body), element id (an
+element attribute that must be unique on a page), and element class (an attribute
+that need not be unique on a page).
+• Cascading Style Sheets (CSS) is a stylesheet language describing visual attributes
+of elements on a Web page. A stylesheet associates sets of visual properties with
+selectors. A special link element inside the head element of an HTML document
+associates a stylesheet with that document.
+• The “developer tools” in each browser, such as the Firefox Web Developer toolbar,
+are invaluable in peeking under the hood to examine both the structure of a page and
+its stylesheets.
+
+
 ## 2.4 5,000 Feet: 3-Tier Architecture & Horizontal Scaling . . . . . . . . . . . . . 53
+* 3 tier architecture
+    1. Presentation - HTTP server
+    2. Logic - application backend
+    3. Persistence tier - DB
+
+### Summary
+• The three-tier architecture includes a presentation tier, which renders views and in-
+teracts with the user; a logic tier, which runs SaaS app code; and a persistence tier,
+which stores app data.
+• HTTP’s statelessness allows the presentation and logic tiers to be shared-nothing ,
+so cloud computing can be used to add more computers to each tier as demand
+requires. However, the persistence tier is harder to scale.
+• Depending on the scale (size) of the deployment, more than 1 tier may be hosted on
+a single computer, or a single tier may require many computers.
+
 ## 2.5 1,000 Feet: Model-View-Controller Architecture . . . . . . . . . . . . . . . 56
+* __Model-View-Controller (MVC)__
+    * Models
+        * concerned with the data manipulated by the application
+    * Views
+        * presented to the user and contain information about the models with which users can interact
+    * Controllers
+        * mediate the interaction between models and views
+### Summary
+• The Model-View-Controller or MVC design pattern distinguishes models that im-
+plement business logic, views that present information to the user and allow the user
+to interact with the app, and controllers that mediate the interaction between views
+and models.
+• In MVC SaaS apps, every user action that can be performed on a web page—
+clicking a link or button, submitting a fill-in form, or using drag-and-drop—is even-
+tually handled by some controller action, which will consult the model(s) as needed
+to obtain information and generate a view in response.
+• MVC is appropriate for interactive SaaS apps with a variety of model types, where
+it makes sense to situate controllers and views along with each type of model. Other
+architectural patterns may be more appropriate for smaller apps with fewer models
+or a smaller repertoire of operations.
+
 ## 2.6 500 Feet: Active Record for Models . . . . . . . . . . . . . . . . . . . . . . 59
 ## 2.7 500 Feet: Routes, Controllers, and REST . . . . . . . . . . . . . . . . . . . 61
 ## 2.8 500 Feet: Template Views . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
