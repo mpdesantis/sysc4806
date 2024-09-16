@@ -227,9 +227,99 @@ grows and releasing them immediately when it drops.
 ## I Software as a Service 41
 
 # 2 The Architecture of SaaS Applications 42
+## Concepts
+Software architecture describes how the subsystems that make up a piece of software
+are connected together to meet the application's functional and non-functional require-
+ments. A design pattern describes a general architectural solution to a family of similar
+problems, obtained by generalizing from the experience of developers who have solved
+those problems before. Examining SaaS apps, design patterns are evident at all levels of
+detail:
+• SaaS apps follow the client-server pattern, in which a client makes requests and
+a server responds to the requests of many clients.
+• A SaaS server follows the three-tier architecture pattern, which separates the re-
+sponsibilities of different SaaS server components and enables horizontal scal-
+ing to accommodate millions of users.
+• SaaS app code lives in the application tier. Many SaaS apps, including those
+based on Rails, follow the Model-View-Controller design pattern, in which Models
+deal with the app's resources such as users or blog posts, Views present information
+to the user via the browser, and Controllers map the user's browser actions to
+application code.
+• For Models, Rails uses the Active Record pattern because it is a good t to
+relational databases, the most popular way of storing SaaS data. For Views,
+Rails uses the Template View pattern to create Web pages to send to the
+browser. For Controllers, Rails follows the Representational State Transfer or
+REST principle, in which each controller action describes a single self-contained
+operation on one of the app's resources.
+Modern SaaS frameworks such as Rails capture a decade's worth of developer expe-
+rience by encapsulating these SaaS design patterns so that SaaS app writers can easily
+apply them.
 
 ## 2.1 100,000 Feet: Client-Server Architecture . . . . . . . . . . . . . . . . . . . . 44
+* __Client Server Architecture__
+    * Client requests, server replies
+    * Design pattern
+        * A reusable structure, behaviour, strategy, or technique that captures a proven solution to a collection of similar prblems by separating the things that change from those that stay the same
+    * SaaS can mean:
+        * "client-server systems built to operate using the open standards of the World Wide Web"
+* __Peer-to-Peer__
+    * Alternate design pattern where each node is both client and server
+
+### Summary
+SaaS Web apps are examples of the client-server architectural pattern, in which
+client software is typically specialized for interacting with the user and sending re-
+quests to the server on the user’s behalf, and the server software is specialized for
+handling large volumes of such requests.
+• Because Web apps use open standards that anyone can implement royalty-free, in
+contrast to proprietary standards used by older client-server apps, the Web browser
+has become the “universal client.”
+• An alternative to client-server is peer-to-peer, in which all entities act as both clients
+and servers. While arguably more flexible, this architecture makes it difficult to
+specialize the software to do either job really well.
+
 ## 2.2 50,000 Feet: Communication—HTTP and URIs . . . . . . . . . . . . . . . . 46
+* __Network Protocol__
+    * A set of communication rules on which agents participating in a network agree.
+    * Agents are clients and server.
+* __HTTP__
+    * Relies on TCP/IP
+        * Allows a pair of agents to communicate via ordered sequences of bytes.
+    * HTTP Request:
+        * `<http-method> <scheme>://<hostname>:<port>/<resource-path>/?<query-terms>#<fragment>`
+        * eg. `GET http://srch.com:80/main/search?q=cloud&lang=en#top`
+    * A _stateless_ protocol
+        * Every request is independent of and unrelated to all previous requests
+        * If an app wants to track state must provide its own mechanism for doing so, as HTTP does not
+            * eg. cookies holding a user's session - client browser responsibility
+
+* __Domain Name System__
+    * Protocol for name resolution
+    * Also relies on TCP/IP
+* __Uniform Resource Identifier (URI)__
+    * A resource generally means anything that can be delivered to the browser
+
+### Summary
+• Web browsers and servers communicate using the HyperText Transfer Proto-
+col . HTTP relies on TCP/IP (Transmission Control Protocol/Internet Protocol) to
+reliably exchange ordered sequences of bytes.
+• Each computer connected to a TCP/IP network has an IP address such as
+128.32.244.172, although the Domain Name System (DNS) allows the use of
+human-friendly names instead. The special name localhost refers to the local
+computer and resolves to the special IP address 127.0.0.1.
+• Each application running on a particular computer must “listen” on a distinct TCP
+port, numbered from 1 to 65535 (216 − 1). Port 80 is used by HTTP (Web) servers.
+• To run a SaaS app locally, you activate an HTTP server listening on a port on
+localhost. WEBrick, Rails’ lightweight server, uses port 3000 by default, but on
+Cloud9 you must force it to use the port number specified by the $PORT environment
+variable.
+• A Uniform Resource Identifier (URI) names a resource available on the Internet.
+The interpretation of the resource name varies from application to application.
+• HTTP is a stateless protocol in that every request is independent of every other
+request, even from the same user. HTTP cookies allow the association of HTTP
+requests from the same user. It’s the browser’s responsibility to accept a cookie from
+an HTTP server and ensure that the cookie is included with future requests sent to
+that server.
+
+
 ## 2.3 10,000 Feet: Representation—HTML and CSS . . . . . . . . . . . . . . . . 50
 ## 2.4 5,000 Feet: 3-Tier Architecture & Horizontal Scaling . . . . . . . . . . . . . 53
 ## 2.5 1,000 Feet: Model-View-Controller Architecture . . . . . . . . . . . . . . . 56
