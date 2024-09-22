@@ -243,7 +243,7 @@ public class AddressBookTest {
 
         // Print results of query
         System.out.println("\nAddressBooks:\n------------");
-        for (AddressBook ab: abResults) {
+        for (AddressBook ab: ab3Results) {
             // Print the AddressBook contents using class method
             ab.printBuddies();
         }
