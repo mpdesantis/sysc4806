@@ -1,9 +1,12 @@
 package AddressBook;
 
-import org.junit.Before;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class BuddyInfoTest {
 
@@ -27,5 +30,39 @@ public class BuddyInfoTest {
 
         System.out.println("testBuddyInfo(): PASS");
     }
+
+    /**
+     * Test persistence.
+     */
+    @Test
+    public void testPersistence() {
+
+        // Add some BuddyInfos
+        BuddyInfo dannyDelicious = new BuddyInfo("Danny Delicious", "5551234");
+
+        // Connecting to the database through EntityManagerFactory
+        // connection details loaded from persistence.xml
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BuddyBookPU");
+
+        EntityManager em = emf.createEntityManager();
+
+        // Create a new transaction
+        EntityTransaction tx = em.getTransaction();
+
+        // Begin the new transaction
+        tx.begin();
+
+        // Persisting the product entity objects
+        //em.persist(arthurAvocado);
+        //em.persist(brettBanana);
+        //em.persist(carlaCranberry);
+        em.persist(dannyDelicious);
+
+        tx.commit();
+
+        System.out.println("testPersistence(): PASS");
+    }
+
+
 
 }
