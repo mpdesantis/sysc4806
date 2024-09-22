@@ -52,12 +52,10 @@ public class BuddyInfoTest {
         // Begin the new transaction
         tx.begin();
 
-        // Persisting the product entity objects
-        //em.persist(arthurAvocado);
-        //em.persist(brettBanana);
-        //em.persist(carlaCranberry);
+        // Persist the BuddyBook entity object
         em.persist(dannyDelicious);
 
+        // Commit the transaction
         tx.commit();
 
         System.out.println("testPersistence(): PASS");

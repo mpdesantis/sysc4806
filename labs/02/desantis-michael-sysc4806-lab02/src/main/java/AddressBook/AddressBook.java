@@ -1,13 +1,18 @@
 package AddressBook;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
 import java.util.ArrayList;
 
 /**
  * Class AddressBook, which models an address book comprised of BuddyInfo objects.
  *
  * @author M. De Santis
- * @version 20240916
+ * @version 20240922
  */
+@Entity
 public class AddressBook {
 
     /* Constants */
@@ -18,6 +23,10 @@ public class AddressBook {
     public String name;
     private ArrayList<BuddyInfo> buddies;
     public String[] buddiesList;
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     /* Constructors */
 
@@ -143,6 +152,14 @@ public class AddressBook {
 
         // Print the AddressBook
         addressBook.printBuddies();
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
 

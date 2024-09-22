@@ -110,17 +110,18 @@ public class AddressBookTest {
         // Begin the new transaction
 		tx.begin();
 
-		// Persisting the product entity objects
-		//em.persist(arthurAvocado);
-        //em.persist(brettBanana);
-        //em.persist(carlaCranberry);
-        em.persist(dannyDelicious);
+        // Persist the AddressBook entity object
+        em.persist(a1);
 
+		// Persist the BuddyInfo entity objects
+		em.persist(arthurAvocado);
+        em.persist(brettBanana);
+        em.persist(carlaCranberry);
+
+        // Commit the transaction
 		tx.commit();
 
         System.out.println("testPersistence(): PASS");
     }
-
-
 
 }
