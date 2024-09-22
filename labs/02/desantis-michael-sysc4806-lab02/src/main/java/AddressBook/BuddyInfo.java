@@ -1,14 +1,23 @@
 package AddressBook;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * Class BuddyInfo, which models a simple contact in an AddressBook.
  *
  * @author M. De Santis
- * @version 20240916
+ * @version 20240922
  */
+@Entity
 public class BuddyInfo {
 
+
     /* Instance Variables */
+    // Persistence ID
+    @Id
+    private Integer id = null;
     private String name;
     private String number;
 
@@ -26,6 +35,7 @@ public class BuddyInfo {
         this();
         this.name = name;
         this.number = number;
+        this.id = null;
     }
 
     /**
@@ -37,10 +47,29 @@ public class BuddyInfo {
         String defaultNumber = "123456789";
         this.name = defaultName;
         this.number = defaultNumber;
+        this.id = null;
     }
 
 
    /* METHODS */
+
+    /**
+     * Getter for BuddyInfo ID.
+     *
+     * @return name BuddyInfo ID.
+     */
+    @GeneratedValue
+    public Integer getId() {
+        return this.id;
+    }
+
+    /**
+     * Setter for BuddyInfo ID.
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 
     /**
      * Getter for BuddyInfo name.
