@@ -1,8 +1,15 @@
 package AddressBook;
 
-import static org.junit.Assert.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class AddressBookTest {
 
@@ -77,6 +84,41 @@ public class AddressBookTest {
         assertEquals(a1.getNumBuddyInfos(), 0);
 
         System.out.println("testRemoveBuddy(): PASS");
+    }
+
+    /**
+     * Test persistence.
+     */
+    @Test
+    public void testPersistence() {
+
+        // Add some BuddyInfos
+        a1.addBuddy(arthurAvocado);
+        a1.addBuddy(brettBanana);
+        a1.addBuddy(carlaCranberry);
+        BuddyInfo dannyDelicious = new BuddyInfo("Danny Delicious", "5551234");
+
+		// Connecting to the database through EntityManagerFactory
+		// connection details loaded from persistence.xml
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("BuddyBookPU");
+
+		EntityManager em = emf.createEntityManager();
+
+		// Create a new transaction
+		EntityTransaction tx = em.getTransaction();
+
+        // Begin the new transaction
+		tx.begin();
+
+		// Persisting the product entity objects
+		//em.persist(arthurAvocado);
+        //em.persist(brettBanana);
+        //em.persist(carlaCranberry);
+        em.persist(dannyDelicious);
+
+		tx.commit();
+
+        System.out.println("testPersistence(): PASS");
     }
 
 

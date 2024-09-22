@@ -17,6 +17,7 @@ public class BuddyInfo {
     /* Instance Variables */
     // Persistence ID
     @Id
+    @GeneratedValue
     private Integer id = null;
     private String name;
     private String number;
@@ -58,7 +59,6 @@ public class BuddyInfo {
      *
      * @return name BuddyInfo ID.
      */
-    @GeneratedValue
     public Integer getId() {
         return this.id;
     }
