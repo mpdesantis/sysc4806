@@ -1,0 +1,3 @@
+[submodule "labs/02/labs/02/introduction-to-jpa"]
+	path = labs/02/labs/02/introduction-to-jpa
+	url = git@github.com:esfandia/introduction-to-jpa.git
