@@ -1,10 +1,9 @@
 package AddressBook;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Class AddressBook, which models an address book comprised of BuddyInfo objects.
@@ -20,13 +19,12 @@ public class AddressBook {
     public static final String defaultName = "AddressBook";
 
     /* Instance Variables */
-    public String name;
-    private ArrayList<BuddyInfo> buddies;
-    public String[] buddiesList;
-
     @Id
     @GeneratedValue
     private Long id;
+    @OneToMany(mappedBy = "addressBook", cascade = CascadeType.PERSIST)
+    private ArrayList<BuddyInfo> buddies;
+    public String name;
 
     /* Constructors */
 
@@ -50,6 +48,15 @@ public class AddressBook {
     public AddressBook(String name) {
         this();
         this.name = name;
+    }
+
+    /**
+     * Accessor: Get the BuddyInfos in this AddressBook.
+     *
+     * @return buddies This AddressBook's ArrayList of BuddyInfos.
+     */
+    public ArrayList<BuddyInfo> getBuddies() {
+        return buddies;
     }
 
     /**
@@ -88,9 +95,10 @@ public class AddressBook {
      * @return void
      */
     public void addBuddy(BuddyInfo buddy) {
-        System.out.println("Adding buddy " + buddy.getName() + "...");
+        System.out.println("Adding buddy " + buddy.getName() + " to AddressBook " + this.getName() + "...");
         if (buddy != null) {
             this.buddies.add(buddy);
+            buddy.setAddressBook(this);
         }
 
         return;
@@ -129,6 +137,24 @@ public class AddressBook {
         return;
     }
 
+    /**
+     * Mutator: Set this AddressBook's ID.
+     *
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * Accessor: Get this AddressBook's ID.
+     *
+     * @return id This AddressBook's ID.
+     */
+    public Long getId() {
+        return id;
+    }
+
+
     /* Main */
 
     /**
@@ -154,12 +180,5 @@ public class AddressBook {
         addressBook.printBuddies();
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }
 

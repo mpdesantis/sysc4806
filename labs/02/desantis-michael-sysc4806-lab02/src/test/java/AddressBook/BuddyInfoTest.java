@@ -8,6 +8,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Class BuddyInfoTest, which tests the BuddyInfo class.
+ *
+ * @author M. De Santis
+ * @version 20240922
+ */
 public class BuddyInfoTest {
 
     /* Test Cases */
@@ -57,6 +63,9 @@ public class BuddyInfoTest {
 
         // Commit the transaction
         tx.commit();
+
+        // Close the EntityManager
+        em.close();
 
         System.out.println("testPersistence(): PASS");
     }

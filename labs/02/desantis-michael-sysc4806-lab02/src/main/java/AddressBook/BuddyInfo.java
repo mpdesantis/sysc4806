@@ -1,8 +1,6 @@
 package AddressBook;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /**
  * Class BuddyInfo, which models a simple contact in an AddressBook.
@@ -15,14 +13,13 @@ public class BuddyInfo {
 
 
     /* Instance Variables */
-    // Persistence ID
     @Id
     @GeneratedValue
     private Integer id = null;
+    @ManyToOne
+    private AddressBook addressBook;
     private String name;
     private String number;
-
-    private static String DELIMITER = "#";
 
     /* Constructors */
 
@@ -37,6 +34,7 @@ public class BuddyInfo {
         this.name = name;
         this.number = number;
         this.id = null;
+        this.addressBook = null;
     }
 
     /**
@@ -49,10 +47,28 @@ public class BuddyInfo {
         this.name = defaultName;
         this.number = defaultNumber;
         this.id = null;
+        this.addressBook = null;
     }
 
 
    /* METHODS */
+
+    /**
+     * Getter for BuddyInfo AddressBook.
+     *
+     * @return addressBook This BuddyInfo's AddressBook.
+     */
+    public AddressBook getAddressBook() {
+        return addressBook;
+    }
+
+    /**
+     * Setter for BuddyInfo AddressBook.
+     *
+     */
+    public void setAddressBook(AddressBook addressBook) {
+        this.addressBook = addressBook;
+    }
 
     /**
      * Getter for BuddyInfo ID.
@@ -99,9 +115,9 @@ public class BuddyInfo {
         
         System.out.println("\tBuddy Name: " + this.getName());
         System.out.println("\tBuddy Number: " + this.getNumber());
+        System.out.println("\t(id): " + this.getId());
 
         return;
     }
-
 
 }
