@@ -112,12 +112,21 @@ public class BuddyInfo {
      * @return void
      */
     public void printBuddyInfo() {
-        
+
         System.out.println("\tBuddy Name: " + this.getName());
         System.out.println("\tBuddy Number: " + this.getNumber());
         System.out.println("\t(id): " + this.getId());
 
         return;
+    }
+
+    /**
+     * Stringify BuddyInfo.
+     *
+     * @return void
+     */
+    public String toString() {
+        return "Buddy (ID " + this.getId() + "): " + this.getName() + " - " + this.getNumber();
     }
 
 }

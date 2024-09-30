@@ -22,7 +22,7 @@ public class AddressBook {
     @Id
     @GeneratedValue
     private Long id;
-    @OneToMany(mappedBy = "addressBook", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "addressBook", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private ArrayList<BuddyInfo> buddies;
     public String name;
 
