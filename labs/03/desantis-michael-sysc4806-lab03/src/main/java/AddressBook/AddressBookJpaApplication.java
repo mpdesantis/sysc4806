@@ -60,31 +60,4 @@ public class AddressBookJpaApplication {
         };
     }
 
-    /**
-     * Demo: AddressBookRepository
-     * @param repository
-     * @return
-     */
-    @Bean
-    public CommandLineRunner addressBookRepositoryDemo(AddressBookRepository repository) {
-        return (args) -> {
-
-            // Create a few BuddyInfos to save in the AddressBook.
-            BuddyInfo b1 = new BuddyInfo("Arthur Avocado", "1234567");
-            BuddyInfo b2 = new BuddyInfo("Brett Banana", "1112323");
-            BuddyInfo b3 = new BuddyInfo("Carla Cranberry", "6669999");
-
-            // Create an AddressBook
-            AddressBook a1 = new AddressBook();
-
-            // Save the BuddyInfos in AddressBook
-            a1.addBuddy(b1);
-            a1.addBuddy(b2);
-            a1.addBuddy(b3);
-
-            // Save it using interface
-            //repository.save(a1);
-
-        };
-    };
 }
