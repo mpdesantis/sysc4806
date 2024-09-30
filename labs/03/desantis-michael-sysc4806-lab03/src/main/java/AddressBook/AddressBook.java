@@ -138,6 +138,20 @@ public class AddressBook {
     }
 
     /**
+     * Stringify all buddy information in this address book.
+     *
+     * @return void
+     */
+    public String toString() {
+
+        String result = "";
+        for (BuddyInfo buddy : buddies) {
+            result += "\n" + buddy.toString();
+        }
+        return result;
+    }
+
+    /**
      * Mutator: Set this AddressBook's ID.
      *
      */

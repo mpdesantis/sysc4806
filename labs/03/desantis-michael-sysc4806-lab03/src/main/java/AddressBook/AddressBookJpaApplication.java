@@ -6,8 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 
@@ -23,8 +21,13 @@ public class AddressBookJpaApplication {
     /* METHODS */
     private static final Logger log = LoggerFactory.getLogger(AddressBookJpaApplication.class);
 
+    /**
+     * Demo: BuddyInfoRepository
+     * @param repository
+     * @return
+     */
     @Bean
-    public CommandLineRunner demo(BuddyInfoRepository repository) {
+    public CommandLineRunner BuddyInfoRepositoryDemo(BuddyInfoRepository repository) {
     return (args) -> {
 
         // save a few BuddyInfos
@@ -57,4 +60,31 @@ public class AddressBookJpaApplication {
         };
     }
 
-    }
+    /**
+     * Demo: AddressBookRepository
+     * @param repository
+     * @return
+     */
+    @Bean
+    public CommandLineRunner addressBookRepositoryDemo(AddressBookRepository repository) {
+        return (args) -> {
+
+            // Create a few BuddyInfos to save in the AddressBook.
+            BuddyInfo b1 = new BuddyInfo("Arthur Avocado", "1234567");
+            BuddyInfo b2 = new BuddyInfo("Brett Banana", "1112323");
+            BuddyInfo b3 = new BuddyInfo("Carla Cranberry", "6669999");
+
+            // Create an AddressBook
+            AddressBook a1 = new AddressBook();
+
+            // Save the BuddyInfos in AddressBook
+            a1.addBuddy(b1);
+            a1.addBuddy(b2);
+            a1.addBuddy(b3);
+
+            // Save it using interface
+            //repository.save(a1);
+
+        };
+    };
+}
