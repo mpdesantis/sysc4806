@@ -120,7 +120,7 @@ public class AddressBookTest {
      * Test persistence.
      */
     @Test
-    public void testPersistence() {
+    public void testPersistence1() {
 
 		// Connecting to the database through EntityManagerFactory
 		// connection details loaded from persistence.xml

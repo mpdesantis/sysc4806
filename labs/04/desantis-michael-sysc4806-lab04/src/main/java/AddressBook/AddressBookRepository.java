@@ -10,7 +10,7 @@ import java.util.List;
 public interface AddressBookRepository extends CrudRepository<AddressBook, Integer> {
 
     /* Methods */
-    List<AddressBook> findByName(String name);
+    AddressBook findByName(String name);
     AddressBook findById(int id);
 
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Class AddressBook, which models an address book comprised of BuddyInfo objects.
@@ -23,7 +24,7 @@ public class AddressBook {
     @GeneratedValue
     private Long id;
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private ArrayList<BuddyInfo> buddies;
+    private List<BuddyInfo> buddies;
     public String name;
 
     /* Constructors */
@@ -55,7 +56,7 @@ public class AddressBook {
      *
      * @return buddies This AddressBook's ArrayList of BuddyInfos.
      */
-    public ArrayList<BuddyInfo> getBuddies() {
+    public List<BuddyInfo> getBuddies() {
         return buddies;
     }
 
@@ -144,6 +145,8 @@ public class AddressBook {
     public String toString() {
 
         String result = "";
+        result += this.getName();
+        result += "\n----------------------";
         for (BuddyInfo buddy : buddies) {
             result += "\n" + buddy.toString();
         }
