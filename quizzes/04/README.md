@@ -78,6 +78,7 @@ A continuous integration server is a server that monitors the mainline (and poss
 One example of a continuous integration service is GitLab (my favourite one!).
 
 ## 8. What should happen when a build fails on the continuous integration server? Why?
+
 When a build fails, the very first thing that should happen is notification: the server should communicate the failed build to any monitoring service, and directly to developers (eg via e-mail, Slack, etc.). Then, the reason for the failure should be quickly found and remedied, which is a capability prioritized in continuously integrated codebases. There are several methodologies for this, but the one that Fowler advocates is to immediately revert the breaking change (ie. perform a rollback to the most recent valid build). In doing so, this immediately brings the codebase back to a functional and safe state so that all developers may continue their development against a valid mainline. While developers continue their development, a subset of developers can (in parallel) begin looking for the bug introduced in the failing push, using diff debugging to aid in their efforts. When the bug is found and fixed, the code can then be rebased onto the mainline (with any conflicts that may have since arisen resolved) and merged in so that it may be checked again by the CI server.
 
 Thanks!!
