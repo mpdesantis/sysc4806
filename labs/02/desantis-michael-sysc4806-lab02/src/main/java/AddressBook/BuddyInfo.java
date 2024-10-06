@@ -16,8 +16,6 @@ public class BuddyInfo {
     @Id
     @GeneratedValue
     private Integer id = null;
-    @ManyToOne
-    private AddressBook addressBook;
     private String name;
     private String number;
 
@@ -34,7 +32,6 @@ public class BuddyInfo {
         this.name = name;
         this.number = number;
         this.id = null;
-        this.addressBook = null;
     }
 
     /**
@@ -47,28 +44,10 @@ public class BuddyInfo {
         this.name = defaultName;
         this.number = defaultNumber;
         this.id = null;
-        this.addressBook = null;
     }
 
 
    /* METHODS */
-
-    /**
-     * Getter for BuddyInfo AddressBook.
-     *
-     * @return addressBook This BuddyInfo's AddressBook.
-     */
-    public AddressBook getAddressBook() {
-        return addressBook;
-    }
-
-    /**
-     * Setter for BuddyInfo AddressBook.
-     *
-     */
-    public void setAddressBook(AddressBook addressBook) {
-        this.addressBook = addressBook;
-    }
 
     /**
      * Getter for BuddyInfo ID.

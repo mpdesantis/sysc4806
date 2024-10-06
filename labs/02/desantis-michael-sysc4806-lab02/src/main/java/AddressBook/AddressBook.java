@@ -22,7 +22,7 @@ public class AddressBook {
     @Id
     @GeneratedValue
     private Long id;
-    @OneToMany(mappedBy = "addressBook", cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST)
     private ArrayList<BuddyInfo> buddies;
     public String name;
 
@@ -98,7 +98,6 @@ public class AddressBook {
         System.out.println("Adding buddy " + buddy.getName() + " to AddressBook " + this.getName() + "...");
         if (buddy != null) {
             this.buddies.add(buddy);
-            buddy.setAddressBook(this);
         }
 
         return;
