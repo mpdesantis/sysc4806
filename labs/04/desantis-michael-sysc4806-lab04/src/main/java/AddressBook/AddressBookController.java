@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -37,15 +38,22 @@ public class AddressBookController {
 		return "greeting";
 	}
 
-	// Save
+	// Print
+	// URL: localhost:8080/addressbooks?name=<name>
 	@RequestMapping("/addressbooks")
 	public String fetchAddressBook(@RequestParam(name="name", required=false, defaultValue="MyAddressBook") String name, Model model) {
 		AddressBook a = serviceInterface.fetchAddressBook(name);
-		model.addAttribute("name", name);
-		model.addAttribute("addressBook", a);
 
-		String contents = a.toString();
-		model.addAttribute("contents", contents);
+		// AddressBook name
+		model.addAttribute("name", name);
+		// The actual AddressBook
+		model.addAttribute("addressBook", a);
+		// List of BuddyInfos
+		List<BuddyInfo> buddies = a.getBuddies();
+		model.addAttribute("buddies", buddies);
+		// The toString of AddressBook
+		//String contents = a.toString();
+		//model.addAttribute("contents", contents);
 
 		return "addressbook";
 	}

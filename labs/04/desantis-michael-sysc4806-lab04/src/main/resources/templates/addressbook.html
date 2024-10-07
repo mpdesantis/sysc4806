@@ -5,9 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="|AddressBook ${name}|" />
+<p th:text="|AddressBook: ${name}|" />
 <hr>
-<p th:text="|${contents}|" />
-<hr>
+<table>
+    <tr th:each="buddy : ${buddies}">
+        <td th:text="${buddy.name}"></td>
+        <td th:text="${buddy.number}"></td>
+    </tr>
+</table>
 </body>
 </html>
