@@ -15,15 +15,17 @@ import java.util.concurrent.atomic.AtomicLong;
 public class AddressBookController {
 
 	private final ServiceInterface serviceInterface;
+	private final AddressBookJpaApplication addressBookJpaApplication;
 
 	@Autowired
-	public AddressBookController(ServiceInterface serviceInterface) {
+	public AddressBookController(ServiceInterface serviceInterface, AddressBookJpaApplication addressBookJpaApplication) {
 		AddressBook ab1 = new AddressBook("MyAddressBook");
 		ab1.addBuddy(new BuddyInfo("Tina Truffle", "1234567"));
 		ab1.addBuddy(new BuddyInfo("Ginny Grapefruit", "7654321"));
 		ab1.addBuddy(new BuddyInfo("Peter Pumpkin", "1223451"));
 		serviceInterface.saveAddressBook(ab1);
 		this.serviceInterface = serviceInterface;
+		this.addressBookJpaApplication = addressBookJpaApplication;
 	}
 
     private static final String template = "Hello, %s!";
@@ -88,14 +90,35 @@ public class AddressBookController {
 	}
 
 	/**
-	 * View a single AddressBook by name
+	 * GET: View a single AddressBook by name
 	 */
-	@RequestMapping("/viewAddressBook")
-	public String viewAddressBooks(@RequestParam(name="name", required=true) String name, Model model) {
+	@GetMapping("/viewAddressBook")
+	public String viewAddressBookGet(@RequestParam(name="name", required=true) String name, Model model) {
 		model.addAttribute("addressBook", serviceInterface.fetchAddressBook(name));
 		return "viewAddressBook";
 	}
 
+	/**
+	 * GET: add a Buddy
+	 */
+	@GetMapping("/addBuddy")
+	public String addBuddyForm(@RequestParam(name="name", required=true) String name, Model model) {
+		AddressBook a = serviceInterface.fetchAddressBook(name);
+		model.addAttribute("addressBook", a);
+		// attributeName corresponds to the th:object field in view template
+		model.addAttribute("buddyInfo", new BuddyInfo());
+		return "addBuddy";
+	}
 
+	@PostMapping("/addBuddy")
+	public String addBuddySubmit(@RequestParam(name="name", required=true) String name, @ModelAttribute BuddyInfo buddyInfo, @ModelAttribute AddressBook addressBook, Model model) {
+		// attributeName corresponds to the th:object field in view template
+		AddressBook a = serviceInterface.fetchAddressBook(name);
+		// Add bud
+		addressBook.addBuddy(buddyInfo);
+		// Persist book
+		serviceInterface.saveAddressBook(addressBook);
+		return "buddyAdded";
+	}
 
 }

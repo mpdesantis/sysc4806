@@ -75,6 +75,10 @@ public class BuddyInfo {
         return name;
     }
 
+    public void setName(String name) { this.name = name; }
+
+    public void setNumber(String number) { this.number = number; }
+
     /**
      * Getter for BuddyInfo number.
      *

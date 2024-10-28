@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="">
+<head>
+    <title>Successfully Added a Buddy!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>You Added a Buddy!</h1>
+<p th:text="'AddressBook: ' + ${addressBook.name}" />
+<p th:text="'Buddy ID: ' + ${buddyInfo.id}" />
+<p th:text="'Buddy Name: ' + ${buddyInfo.name}" />
+<p th:text="'Buddy Number: ' + ${buddyInfo.number}" />
+<br>
+<hr>
+<a href="/viewAddressBooks">View AddressBooks</a>
+<br>
+<a href="/createAddressBook">Create Another AddressBook</a>
+</body>
+</html>
