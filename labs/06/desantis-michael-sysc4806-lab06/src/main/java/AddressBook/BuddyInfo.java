@@ -75,7 +75,7 @@ public class BuddyInfo {
         return fullName;
     }
 
-    public void setName(String name) { this.fullName = name; }
+    public void setFullName(String name) { this.fullName = name; }
 
     public void setNumber(String number) { this.number = number; }
 

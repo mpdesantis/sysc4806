@@ -16,6 +16,7 @@ public class AddressBookController {
 
 	private final ServiceInterface serviceInterface;
 	private final AddressBookJpaApplication addressBookJpaApplication;
+	//private final BuddyInfoRepository buddyInfoRepository;
 
 	@Autowired
 	public AddressBookController(ServiceInterface serviceInterface, AddressBookJpaApplication addressBookJpaApplication) {
@@ -93,30 +94,25 @@ public class AddressBookController {
 	 * GET: View a single AddressBook by name
 	 */
 	@GetMapping("/viewAddressBook")
-	public String viewAddressBookGet(@RequestParam(name="name", required=true) String name, Model model) {
-		model.addAttribute("addressBook", serviceInterface.fetchAddressBook(name));
+	public String viewAddressBookGet(@RequestParam("id") int id, Model model) {
+		model.addAttribute("addressBook", serviceInterface.fetchAddressBookById(id));
 		return "viewAddressBook";
 	}
 
-	/**
-	 * GET: add a Buddy
-	 */
+
 	@GetMapping("/addBuddy")
-	public String addBuddyForm(@RequestParam(name="name", required=true) String name, Model model) {
-		// attributeName corresponds to the th:object field in view template
-		AddressBook a = serviceInterface.fetchAddressBook(name);
-		model.addAttribute("addressBook", a);
+	public String addBuddyForm(@RequestParam("id") int id, Model model) {
+		AddressBook addressBook = serviceInterface.fetchAddressBookById(id);
+		model.addAttribute("addressBook", addressBook);
 		model.addAttribute("buddyInfo", new BuddyInfo());
 		return "addBuddy";
 	}
 
 	@PostMapping("/addBuddy")
-	public String addBuddySubmit(@ModelAttribute BuddyInfo buddyInfo, @ModelAttribute AddressBook addressBook, Model model) {
-		// attributeName corresponds to the th:object field in view template
-		// Add bud
+	public String addBuddySubmit(@ModelAttribute AddressBook addressBook, @ModelAttribute BuddyInfo buddyInfo, Model model) {
 		addressBook.addBuddy(buddyInfo);
-		// Persist book
 		serviceInterface.saveAddressBook(addressBook);
+		// ie. addressBookRepository.save(addressBook)
 		return "buddyAdded";
 	}
 

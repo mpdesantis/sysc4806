@@ -17,7 +17,7 @@
         <td th:text="${AddressBook.name}"></td>
         <td th:text="${AddressBook.getNumBuddyInfos()}"></td>
         <td>
-            <a th:href="@{/viewAddressBook?name={name}(name=${AddressBook.name})}">link</a>
+            <a th:href="@{/viewAddressBook?id={id}(id=${AddressBook.id})}">link</a>
         </td>
     </tr>
 </table>

@@ -26,6 +26,11 @@ public class ServiceInterfaceImpl implements ServiceInterface {
     }
 
     @Override
+    public AddressBook fetchAddressBookById(int id) {
+        return addressBookRepository.findById(id);
+    }
+
+    @Override
     public List<AddressBook> fetchAddressBooks() {
         return (List<AddressBook>) addressBookRepository.findAll();
     }
