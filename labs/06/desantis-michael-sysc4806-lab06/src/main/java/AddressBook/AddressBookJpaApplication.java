@@ -69,25 +69,27 @@ public class AddressBookJpaApplication {
     public CommandLineRunner AddressBookRepositoryDemo(AddressBookRepository repository) {
         return (args) -> {
 
+            /* DEMONSTRATION ONLY */
+
             // Create AddressBook
-            AddressBook a1 = new AddressBook("My Persistent AddressBook");
+            //AddressBook a1 = new AddressBook("My Persistent AddressBook");
 
             // Add some BuddyInfos to AddressBook
-            a1.addBuddy(new BuddyInfo("Jimmy Juniper", "1234567"));
-            a1.addBuddy(new BuddyInfo("Kitty Kiwi", "1112323"));
-            a1.addBuddy(new BuddyInfo("Larry Lime", "6669999"));
+            //a1.addBuddy(new BuddyInfo("Jimmy Juniper", "1234567"));
+            //a1.addBuddy(new BuddyInfo("Kitty Kiwi", "1112323"));
+            //a1.addBuddy(new BuddyInfo("Larry Lime", "6669999"));
 
             // Persist the AddressBook, recursively (cascadingly) persisting BuddyInfos
-            repository.save(a1);
-            log.info("AddressBookRepository has been saved.");
+            //repository.save(a1);
+            //log.info("AddressBookRepository has been saved.");
 
             // Find by name
-            AddressBook a2 = repository.findByName("My Persistent AddressBook");
-            log.info(a2.toString());
+            //AddressBook a2 = repository.findByName("My Persistent AddressBook");
+            //log.info(a2.toString());
 
             // Find by ID
-            AddressBook a3 = repository.findById(1);
-            log.info(a3.toString());
+            //AddressBook a3 = repository.findById(1);
+            //log.info(a3.toString());
 
         };
     }

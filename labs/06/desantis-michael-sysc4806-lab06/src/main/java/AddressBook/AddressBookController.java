@@ -20,13 +20,12 @@ public class AddressBookController {
 
 	@Autowired
 	public AddressBookController(ServiceInterface serviceInterface, AddressBookJpaApplication addressBookJpaApplication, BuddyInfoRepository buddyInfoRepository) {
-		AddressBook ab1 = new AddressBook("MyAddressBook");
-		ab1.addBuddy(new BuddyInfo("Tina Truffle", "1234567"));
-		ab1.addBuddy(new BuddyInfo("Ginny Grapefruit", "7654321"));
-		ab1.addBuddy(new BuddyInfo("Peter Pumpkin", "1223451"));
-		serviceInterface.saveAddressBook(ab1);
-		ab1.addBuddy(new BuddyInfo("Reggie Rutabaga", "451"));
-		serviceInterface.saveAddressBook(ab1);
+		// For demonstration
+		//AddressBook ab1 = new AddressBook("MyAddressBook");
+		//ab1.addBuddy(new BuddyInfo("Tina Truffle", "1234567"));
+		//ab1.addBuddy(new BuddyInfo("Ginny Grapefruit", "7654321"));
+		//ab1.addBuddy(new BuddyInfo("Peter Pumpkin", "1223451"));
+		//serviceInterface.saveAddressBook(ab1);
 		this.serviceInterface = serviceInterface;
 		this.addressBookJpaApplication = addressBookJpaApplication;
 		this.buddyInfoRepository = buddyInfoRepository;
@@ -115,16 +114,12 @@ public class AddressBookController {
 	@PostMapping("/addBuddy")
 	public String addBuddySubmit(@ModelAttribute AddressBook addressBook, @ModelAttribute BuddyInfo buddyInfo, Model model) {
 		AddressBook ab = serviceInterface.fetchAddressBookById(Math.toIntExact(addressBook.getId()));
-		System.out.println("addressBook ID: " + addressBook.getId());
-		System.out.println("addressBook NAME: " + addressBook.getName());
-		System.out.println("AB ID: " + ab.getId());
-		System.out.println("AB NAME: " + ab.getName());
-		System.out.println("BUDDY NAME: " + buddyInfo.getName());
 		buddyInfo = new BuddyInfo(buddyInfo.getFullName(), buddyInfo.getNumber());
 		buddyInfoRepository.save(buddyInfo);
-		//ab.addBuddy(new BuddyInfo("tim", "111"));
+		ab.addBuddy(buddyInfo);
 		ab.printBuddies();
 		serviceInterface.saveAddressBook(ab);
+		ab.printBuddies();
 		// ie. addressBookRepository.save(addressBook)
 		return "buddyAdded";
 	}
