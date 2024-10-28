@@ -21,7 +21,7 @@ public class AddressBook {
 
     /* Instance Variables */
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<BuddyInfo> buddies;

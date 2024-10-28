@@ -7,8 +7,13 @@
 <body>
 	<h1>Form</h1>
     <p>Add a Buddy to AddressBook:</p>
+    <!--
     <p th:text="${addressBook.name}"></p>
+    -->
     <form action="#" th:action="@{/addBuddy}" method="post">
+        </label></p>
+        <p>AddressBook ID: <label>
+            <input type="text" th:object="${addressBook}" th:field="*{id}" />
         </label></p>
         <p>Buddy Name: <label>
             <input type="text" th:object="${buddyInfo}" th:field="*{fullName}" />
