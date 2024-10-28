@@ -16,7 +16,7 @@ public class BuddyInfo {
     @Id
     @GeneratedValue
     private Integer id = null;
-    private String name;
+    private String fullName;
     private String number;
 
     /* Constructors */
@@ -29,7 +29,7 @@ public class BuddyInfo {
      */
     public BuddyInfo(String name, String number) {
         this();
-        this.name = name;
+        this.fullName = name;
         this.number = number;
         this.id = null;
     }
@@ -41,7 +41,7 @@ public class BuddyInfo {
     public BuddyInfo() {
         String defaultName = "Some Buddy";
         String defaultNumber = "123456789";
-        this.name = defaultName;
+        this.fullName = defaultName;
         this.number = defaultNumber;
         this.id = null;
     }
@@ -72,10 +72,10 @@ public class BuddyInfo {
      * @return name This buddy's name.
      */
     public String getName() {
-        return name;
+        return fullName;
     }
 
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) { this.fullName = name; }
 
     public void setNumber(String number) { this.number = number; }
 
@@ -96,7 +96,7 @@ public class BuddyInfo {
      */
     public void printBuddyInfo() {
 
-        System.out.println("\tBuddy Name: " + this.getName());
+        System.out.println("\tBuddy Name: " + this.getFullName());
         System.out.println("\tBuddy Number: " + this.getNumber());
         System.out.println("\t(id): " + this.getId());
 
@@ -109,7 +109,10 @@ public class BuddyInfo {
      * @return void
      */
     public String toString() {
-        return "Buddy (ID " + this.getId() + "): " + this.getName() + " - " + this.getNumber();
+        return "Buddy (ID " + this.getId() + "): " + this.getFullName() + " - " + this.getNumber();
     }
 
+    public String getFullName() {
+        return this.fullName;
+    }
 }

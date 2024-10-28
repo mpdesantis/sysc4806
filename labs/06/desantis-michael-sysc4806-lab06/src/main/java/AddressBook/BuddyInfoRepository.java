@@ -10,7 +10,7 @@ import java.util.List;
 public interface BuddyInfoRepository extends CrudRepository<BuddyInfo, Integer> {
 
     /* Methods */
-    List<BuddyInfo> findByName(String name);
+    List<BuddyInfo> findByFullName(String fullName);
     BuddyInfo findById(int id);
 
 }

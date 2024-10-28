@@ -96,7 +96,7 @@ public class AddressBook {
      * @return void
      */
     public void addBuddy(BuddyInfo buddy) {
-        System.out.println("Adding buddy " + buddy.getName() + " to AddressBook " + this.getName() + "...");
+        System.out.println("Adding buddy " + buddy.getFullName() + " to AddressBook " + this.getName() + "...");
         if (buddy != null) {
             this.buddies.add(buddy);
         }
@@ -113,7 +113,7 @@ public class AddressBook {
      */
     public BuddyInfo removeBuddy(int index) {
         if (index >= 0 && index < buddies.size()) {
-            System.out.println("Removing buddy " + buddies.get(index).getName() + "...");
+            System.out.println("Removing buddy " + buddies.get(index).getFullName() + "...");
             return this.buddies.remove(index);
         }
         return null;

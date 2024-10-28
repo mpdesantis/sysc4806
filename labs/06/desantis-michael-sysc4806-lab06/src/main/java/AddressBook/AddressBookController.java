@@ -103,17 +103,16 @@ public class AddressBookController {
 	 */
 	@GetMapping("/addBuddy")
 	public String addBuddyForm(@RequestParam(name="name", required=true) String name, Model model) {
+		// attributeName corresponds to the th:object field in view template
 		AddressBook a = serviceInterface.fetchAddressBook(name);
 		model.addAttribute("addressBook", a);
-		// attributeName corresponds to the th:object field in view template
 		model.addAttribute("buddyInfo", new BuddyInfo());
 		return "addBuddy";
 	}
 
 	@PostMapping("/addBuddy")
-	public String addBuddySubmit(@RequestParam(name="name", required=true) String name, @ModelAttribute BuddyInfo buddyInfo, @ModelAttribute AddressBook addressBook, Model model) {
+	public String addBuddySubmit(@ModelAttribute BuddyInfo buddyInfo, @ModelAttribute AddressBook addressBook, Model model) {
 		// attributeName corresponds to the th:object field in view template
-		AddressBook a = serviceInterface.fetchAddressBook(name);
 		// Add bud
 		addressBook.addBuddy(buddyInfo);
 		// Persist book

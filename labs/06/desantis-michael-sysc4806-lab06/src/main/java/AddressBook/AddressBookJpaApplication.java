@@ -53,7 +53,7 @@ public class AddressBookJpaApplication {
         // fetch buddyInfos by number
         log.info("BuddyInfo found with findByName('Arthur Avocado'):");
         log.info("--------------------------------------------");
-        repository.findByName("Arthur Avocado").forEach(b2 -> {
+        repository.findByFullName("Arthur Avocado").forEach(b2 -> {
             log.info(b2.toString());
         });
         log.info("");
