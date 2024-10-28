@@ -113,14 +113,13 @@ public class AddressBookController {
 
 	@PostMapping("/addBuddy")
 	public String addBuddySubmit(@ModelAttribute AddressBook addressBook, @ModelAttribute BuddyInfo buddyInfo, Model model) {
-		AddressBook ab = serviceInterface.fetchAddressBookById(Math.toIntExact(addressBook.getId()));
+		addressBook = serviceInterface.fetchAddressBookById(Math.toIntExact(addressBook.getId()));
 		buddyInfo = new BuddyInfo(buddyInfo.getFullName(), buddyInfo.getNumber());
 		buddyInfoRepository.save(buddyInfo);
-		ab.addBuddy(buddyInfo);
-		ab.printBuddies();
-		serviceInterface.saveAddressBook(ab);
-		ab.printBuddies();
-		// ie. addressBookRepository.save(addressBook)
+		addressBook.addBuddy(buddyInfo);
+		addressBook.printBuddies();
+		serviceInterface.saveAddressBook(addressBook);
+		addressBook.printBuddies();
 		return "buddyAdded";
 	}
 
