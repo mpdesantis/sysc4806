@@ -60,9 +60,6 @@ public class AddressBookController {
 
 	/**
 	 * Form to create a new AddressBook
-	 *
-	 * @param model
-	 * @return
 	 */
 	@GetMapping("/createAddressBook")
 	public String createAddressBookForm(Model model) {
@@ -71,12 +68,34 @@ public class AddressBookController {
 		return "createAddressBook";
 	}
 
+	/**
+	 * Form submission handling to create a new AddressBook
+	 */
 	@PostMapping("/createAddressBook")
 	public String createAddressBookSubmit(@ModelAttribute AddressBook addressBook, Model model) {
 		model.addAttribute("addressBook", addressBook);
 		serviceInterface.saveAddressBook(addressBook);
 		return "addressBookCreated";
 	}
+
+	/**
+	 * View all AddressBooks
+	 */
+	@RequestMapping("/viewAddressBooks")
+	public String viewAddressBooks(Model model) {
+		model.addAttribute("addressBooks", serviceInterface.fetchAddressBooks());
+		return "viewAddressBooks";
+	}
+
+	/**
+	 * View a single AddressBook by name
+	 */
+	@RequestMapping("/viewAddressBook")
+	public String viewAddressBooks(@RequestParam(name="name", required=true) String name, Model model) {
+		model.addAttribute("addressBook", serviceInterface.fetchAddressBook(name));
+		return "viewAddressBook";
+	}
+
 
 
 }

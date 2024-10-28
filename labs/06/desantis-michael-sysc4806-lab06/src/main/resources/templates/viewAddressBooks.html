@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="">
+<head>
+    <title>View Your AddressBook!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Your AddressBooks</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Buddies</th>
+    </tr>
+    <tr th:each="AddressBook : ${addressBooks}">
+        <td th:text="${AddressBook.id}"></td>
+        <td th:text="${AddressBook.name}"></td>
+        <td th:text="${AddressBook.getNumBuddyInfos()}"></td>
+    </tr>
+</table>
+<br>
+<hr>
+<a href="/createAddressBook">Create Another AddressBook</a>
+</body>
+</html>
