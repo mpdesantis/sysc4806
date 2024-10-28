@@ -11,7 +11,7 @@
 	</parent>
 
     <groupId>MichaelDeSantis</groupId>
-    <artifactId>desantis-michael-sysc4806-lab06</artifactId>
+    <artifactId>desantis-michael-sysc4806-lab03</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

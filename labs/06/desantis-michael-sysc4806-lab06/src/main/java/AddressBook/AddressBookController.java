@@ -1,13 +1,11 @@
 package AddressBook;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +54,28 @@ public class AddressBookController {
 		//model.addAttribute("contents", contents);
 
 		return "addressbook";
+	}
+
+	/* Lab 6 */
+
+	/**
+	 * Form to create a new AddressBook
+	 *
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/createAddressBook")
+	public String createAddressBookForm(Model model) {
+		// attributeName corresponds to the th:object field in view template
+		model.addAttribute("addressBook", new AddressBook());
+		return "createAddressBook";
+	}
+
+	@PostMapping("/createAddressBook")
+	public String createAddressBookSubmit(@ModelAttribute AddressBook addressBook, Model model) {
+		model.addAttribute("addressBook", addressBook);
+		serviceInterface.saveAddressBook(addressBook);
+		return "addressBookCreated";
 	}
 
 

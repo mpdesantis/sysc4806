@@ -1,11 +1,11 @@
 # README
 * Author: Michael De Santis
 * CUID: 101213450
-* Date: 2024/10/28
-* Submission: SYSC 4101 A Lab 6
+* Date: 2024/10/07
+* Submission: SYSC 4101 A Lab 4
 
 ## Description
-SYSC 4806A Lab 6 Submission.
+SYSC 4806A Lab 4 Submission.
 
 ## Configuration
 The code submitted here was developed and compiled on an Ubuntu 22.04 LTS machine with the folowing Java versions:
